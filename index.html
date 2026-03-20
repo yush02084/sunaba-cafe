@@ -26,6 +26,10 @@
             --accent-pink: #E8D0CC; /* イチオシバッジの背景色 */
             --accent-pink-text: #965B54; /* イチオシバッジの文字色 */
         }
+        
+        html {
+        scroll-behavior: smooth;
+        }
 
         /* Reset & Base Styles */
         * {
@@ -368,8 +372,8 @@
             <nav class="global-nav">
                 <ul>
                     <li><a href="#" class="active">HOME</a></li>
-                    <li><a href="#">メニュー</a></li>
-                    <li><a href="#">店舗情報</a></li>
+                    <li><a href="#menu">メニュー</a></li>
+                    <li><a href="#info">店舗情報</a></li>
                     <li><a href="#">お問い合わせ</a></li>
                 </ul>
             </nav>
@@ -403,7 +407,7 @@
             </div>
         </section>
 
-        <section class="menu container">
+        <section id="menu" class="menu container">
             <h2 class="section-title">メニュー</h2>
             <div class="menu-grid">
                 <div class="menu-item">
@@ -451,7 +455,7 @@
             </div>
         </section>
 
-        <section class="store-info container">
+        <section id="info" class="store-info container">
             <div class="info-box">
                 <div class="info-details">
                     <h3>店舗情報 <span>全席禁煙</span></h3>
