@@ -532,6 +532,9 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .pc-only {
+                display: none; /* スマホの時は改行を無効化する */
+            }
             .header-inner {
                 flex-direction: column;
                 gap: 20px;
@@ -657,9 +660,9 @@
             <div class="secret-ticket">
               <p class="ticket-title">🤫 Webサイトをご覧いただいた方へ</p>
               <p class="ticket-desc">
-                お店でご注文の際に<strong>「すなばのWeb見ました」</strong>と<br />
+                お店でご注文の際に<strong>「すなばのWeb見ました」</strong>と<br class="pc-only">
                 こっそりお伝えください。<br />
-                ささやかですが、店主から手作りの小さなクッキーを1枚<br />プレゼントいたします。
+                ささやかですが、店主から手作りの小さなクッキーを1枚<br class="pc-only">プレゼントいたします。
               </p>
             </div>
           </div>
@@ -675,7 +678,7 @@
               <h3 class="menu-name">ナポリタン</h3>
               <p class="menu-price">¥1,100</p>
               <p class="menu-desc">
-                昔ながらの味わい。<br />どこか懐かしい定番の一皿です。
+                昔ながらの味わい。<br class="pc-only">どこか懐かしい定番の一皿です。
               </p>
             </div>
             <img
@@ -689,7 +692,7 @@
               <h3 class="menu-name">ブレンドコーヒー</h3>
               <p class="menu-price">¥550</p>
               <p class="menu-desc">
-                香りとコクのバランスを<br />大切にした一杯です。
+                香りとコクのバランスを<br class="pc-only">大切にした一杯です。
               </p>
             </div>
             <img
@@ -703,7 +706,7 @@
               <h3 class="menu-name">いちごのショートケーキ</h3>
               <p class="menu-price">¥450</p>
               <p class="menu-desc">
-                やさしい甘さの生クリームと<br />いちごを重ねました。<br />どこか懐かしく<br />ほっとする味わいです。
+                やさしい甘さの生クリームと<br class="pc-only">いちごを重ねました。<br />どこか懐かしく<br class="pc-only">ほっとする味わいです。
               </p>
             </div>
             <img
@@ -717,7 +720,7 @@
               <h3 class="menu-name">アイスコーヒー</h3>
               <p class="menu-price">¥550</p>
               <p class="menu-desc">
-                すっきりとした苦味と<br />深みのあるコクを感じられる一杯<br />ゆっくりとした時間のお供にどうぞ。
+                すっきりとした苦味と<br class="pc-only">深みのあるコクを感じられる一杯<br />ゆっくりとした時間のお供にどうぞ。
               </p>
             </div>
             <img
