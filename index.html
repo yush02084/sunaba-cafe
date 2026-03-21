@@ -44,6 +44,10 @@
             /* イチオシバッジの文字色 */
         }
 
+        p {
+            text-align: justify; /* 文章を枠いっぱいに広げて端を揃える */
+        }
+
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 100px;
@@ -199,6 +203,7 @@
         .hero p {
             font-size: 14px;
             margin-bottom: 15px;
+            text-align: center;
         }
 
         .hero-info {
@@ -530,10 +535,18 @@
             margin: 0 10px;
         }
 
+        /* 1. まずは全ての画面で非表示にする */
+        .sp-only {
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .pc-only {
                 display: none; /* スマホの時は改行を無効化する */
+            }
+            .sp-only {
+                display: inline; /* これで改行が有効になります */
             }
             .header-inner {
                 flex-direction: column;
@@ -631,9 +644,9 @@
       <section class="hero">
         <div class="hero-content">
           <h1>一杯のコーヒーに、<br />ほっとするひとときを。</h1>
-          <p>1965年創業 愛媛・今治で長年愛されてきた小さな喫茶店。</p>
+          <p>1965年創業 <br class="sp-only">愛媛・今治で長年愛されてきた小さな喫茶店。</p>
           <p>
-            丁寧に淹れたコーヒーと手作りのお食事で、あなたの日常にやさしい時間をお届けします。
+            丁寧に淹れたコーヒーと手作りのお食事で、<br class="sp-only">あなたの日常にやさしい時間をお届けします。
           </p>
           <div class="hero-info">
             ・ 営業時間 12:00〜20:00 <span>・</span> 火曜日定休
@@ -654,15 +667,15 @@
               お客様との会話を大切にしながら、<br />その日の気分やお好みに合わせて豆を選び、<br />一杯ずつお淹れするオリジナルコーヒーをご用意しています。
             </p>
             <p>
-              昔ながらの喫茶店の良さを大切にしながら、<br />どなたでもゆっくり過ごせる空間を心がけています。
+              昔ながらの喫茶店の良さを大切にしながら、<br class="pc-only">どなたでもゆっくり過ごせる空間を心がけています。
             </p>
             <p>お近くにお越しの際は、ぜひお立ち寄りください。</p>
             <div class="secret-ticket">
               <p class="ticket-title">🤫 Webサイトをご覧いただいた方へ</p>
               <p class="ticket-desc">
-                お店でご注文の際に<strong>「すなばのWeb見ました」</strong>と<br class="pc-only">
+                お店でご注文の際に<br class="sp-only"><strong>「すなばのWeb見ました」</strong>と<br />
                 こっそりお伝えください。<br />
-                ささやかですが、店主から手作りの小さなクッキーを1枚<br class="pc-only">プレゼントいたします。
+                ささやかですが、店主から手作りの小さな<br class="sp-only">クッキーを1枚<br class="pc-only">プレゼントいたします。
               </p>
             </div>
           </div>
