@@ -75,8 +75,18 @@
             z-index: 1000; /* 他の要素（地図や画像）より上に表示させるため */
             background-color: var(--bg-color); /* 透けないように背景色を指定 */
             width: 100%
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* スクロール時に浮いているように見せる影（お好みで） */
-            padding: 10px 0;
+            /* 変化をふわっとさせる（0.3秒かけて変化） */
+            transition: all 0.3s ease;
+        }
+
+        /* スクロールした時に自動で付与されるクラス */
+        header.is-scrolled {
+            /* 今の色に「透明」を15%混ぜる（＝少し透ける） */
+            background-color: color-mix(in srgb, var(--bg-color), transparent 15%);
+            /* オプション：磨りガラスのように後ろを少しボカすと高級感が出ます */
+            backdrop-filter: blur(6px);
+            /* 下にうっすら影をつけて、浮いている感じを出す */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .header-inner {
@@ -85,7 +95,24 @@
             align-items: center;
             padding: 10px 0;
         }
-
+        
+        /* --- ハンバーガーボタン --- */
+        .hamburger {
+            display: none; /* デスクトップでは隠す */
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 2000;
+            padding: 10px;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-main);
+            margin-bottom: 5px;
+            transition: all 0.3s;
+        }
         .logo {
             font-size: 28px;
             font-weight: 700;
@@ -369,6 +396,31 @@
             .section-title::before, .section-title::after {
                 flex: 0 1 50px;
             }
+            .hamburger { display: block; }
+
+            .global-nav {
+                position: fixed;
+                top: 0;
+                right: -100%; /* 画面外に隠す */
+                width: 70%;
+                height: 100vh;
+                background-color: var(--bg-color);
+                padding-top: 80px;
+                transition: 0.3s;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .global-nav.is-active { right: 0; } /* 画面内に出る */
+
+            .global-nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            /* ボタンを「×」にするアニメーション */
+            .hamburger.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .hamburger.is-active span:nth-child(2) { opacity: 0; }
+            .hamburger.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
         }
     </style>
 </head>
@@ -377,7 +429,12 @@
     <header style="width: 100%">
         <div class="header-inner container">
             <div class="logo">すなばカフェ</div>
-            <nav class="global-nav">
+            <button class="hamburger" id="js-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            </button>
+            <nav class="global-nav" id="js-nav">
                 <ul>
                     <li><a href="#">HOME</a></li>
                     <li><a href="#menu">メニュー</a></li>
@@ -489,6 +546,34 @@
             &copy; 2026 すなばカフェ All Rights Reserved
         </div>
     </footer>
+<script>
+    const header = document.querySelector('header');
+    const hamburger = document.getElementById('js-hamburger');
+    const nav = document.getElementById('js-nav');
+    const navLinks = document.querySelectorAll('.global-nav a');
 
+    // 1. スクロール透過
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('is-scrolled');
+        } else {
+            header.classList.remove('is-scrolled');
+        }
+    });
+
+    // 2. ハンバーガーメニュー開閉
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('is-active');
+        nav.classList.toggle('is-active');
+    });
+
+    // 3. リンククリックでメニューを閉じる（スマホ用）
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('is-active');
+            nav.classList.remove('is-active');
+        });
+    });
+</script>
 </body>
 </html>
